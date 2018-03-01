@@ -1,6 +1,6 @@
 import calcTimeBetween from './calcTimeBetween'
 
-exports.getServicePoints(ride, pickUpTime, bonus) {
+exports.getServicePoints = function (ride, pickUpTime, bonus) {
   const distance = calcTimeBetween(ride)
 
   if (pickUpTime + distance > ride.f) return 0

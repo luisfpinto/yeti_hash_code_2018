@@ -1,6 +1,6 @@
 import getRidePoints from './getRidePoints'
 
-exports.getSolutionPoints(vehiclesArrays, bonus) {
+exports.getSolutionPoints = function (vehiclesArrays, bonus) {
   // Array with the points performed per vehicle
   const pointsPerVehicle = vehiclesArrays.map(vehicle => {
     // Calc points earned for each service a vehicle has taken
