@@ -1,3 +1,3 @@
-export function checkIfPossibleRide (rideCost, currentTime, latestFinish) {
+exports.checkIfPossibleRide = function (rideCost, currentTime, latestFinish) {
   return (rideCost + currentTime) <= latestFinish
 }
