@@ -17,7 +17,7 @@ exports.getBestSimulation = function (input) {
   let currentSolutionPoints
 
   for (let i = 0; i < NUM_SIM; i++) {
-    currentSolution = runSimulation(shuffle(input))
+    currentSolution = runSimulation(shuffle(input.rides))
     currentSolutionPoints = getSolutionPoints(currentSolution)
     if (currentSolutionPoints > bestSolutionPoints) {
       bestSolution = currentSolution
@@ -28,15 +28,18 @@ exports.getBestSimulation = function (input) {
   return bestSolution
 }
 
+exports.runSimulation = runSimulation
+
 function runSimulation (ridesArray) {
   let solution = []
   let pendingRides = ridesArray
   while (pendingRides.length > 0) {
+    console.log(pendingRides)
     const aux = filterGivenRides(pendingRides, solution)
     solution = [...solution, drive(pendingRides)]
     pendingRides = aux
   }
-
+  console.log('Finished simulation with simulation', ridesArray)
   return solution
 }
 

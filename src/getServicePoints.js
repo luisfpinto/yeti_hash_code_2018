@@ -1,4 +1,4 @@
-import calcTimeBetween from './calcTimeBetween'
+const calcTimeBetween = require('./calcTimeBetween')
 
 exports.getServicePoints = function (ride, pickUpTime, bonus) {
   const distance = calcTimeBetween(ride)
