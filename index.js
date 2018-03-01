@@ -1,12 +1,14 @@
+const { getBestSimulation } = require('./src/getBestSimulation')
+
 const fs = require('fs')
 const processInput = require('./src/processInput')
-const {runSimulation} = require('./src/getBestSimulation')
+// const {runSimulation} = require('./src/getBestSimulation')
 
 // For each file in inputs direcory
 const file = 'a_example.in'
 // fs.readdirSync('./inputs').forEach(file => {
 const input = processInput(`./inputs/${file}`)
-const solution = runSimulation(input)
+const solution = getBestSimulation(input)
 console.log(solution)
 const output = solution.reduce((acc, vehicleServices) => {
   const servicesString = vehicleServices.map(service => ' ' + service.id).join('')
