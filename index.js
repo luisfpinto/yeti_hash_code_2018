@@ -1,14 +1,17 @@
-const parser = require('jolicitron')
-const fs = require('fs')
+const parser = require("jolicitron")
+const fs = require("fs")
 
-const file = fs.readFileSync('sample.in', 'utf8')
+const file = fs.readFileSync("inputs/a_example.in", "utf8")
 console.log(file)
 
-const parsed = jolicitron((save, n) => [
-  save('Ori'),
-  save('Dest'),
-  save('i'),
-  n('paths', { length: 'i' })
+const parsed = parser((save, n) => [
+  "R",
+  "C",
+  "F",
+  save("N"),
+  "B",
+  "T",
+  n("rides", { length: "N" }, "a", "b", "x", "y", "s", "f")
 ])
-
-console.log(parsed(file))
+const { parsedValue } = parsed(file)
+console.log(parsedValue)
