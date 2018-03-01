@@ -1,36 +1,14 @@
 const fs = require('fs')
-const processInput = require('./processInput')
+const processInput = require('./src/processInput')
 
 // For each file in inputs direcory
 fs.readdirSync('./inputs').forEach(file => {
   const input = processInput(`./inputs/${file}`)
-  const {F} = input
-  let output = ''
-  console.log(typeof(F))
-  for (let i = 0; i < F; i++) {
-    output.concat(`${i + 1} ${i}\n`)
-    // fs.appendFile(`outputs/output_${file}`, `${i + 1} ${i}\n`, function(err) {
-    //   if (err) return console.log(err)
-    //   console.log("Appended!")
-    // })
-  }
+  const solution = getBestSimulation(input)
+  const output = solution.reduce((acc, vehicleServices) => {
+    const servicesString = vehicleServices.map(service => ' ' + service.id)
+    return acc + `${vehicleServices.length}${servicesString}\n`
+  }, '')
+  fs.writeFileSync(`outputs/output_${file}`, output)
+  console.log("Finished with ", `outputs/output_${file}`)
 })
-
-
-// const fs = require("fs")
-// const processInput = require("./processInput")
-
-// // For each file in inputs direcory
-// fs.readdirSync("./inputs").forEach(file => {
-//   const input = processInput(`./inputs/${file}`)
-//   const { F } = input
-//   console.log(F, file)
-//   for (let i = F; i < F; i++) {
-//     fs.appendFile(`outputs/output_${file}`, `siii`, function(err) {
-//       if (err) return console.log(err)
-//       console.log("Appended!")
-//     })
-//   }
-// })
-
-

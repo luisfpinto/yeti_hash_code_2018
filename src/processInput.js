@@ -14,6 +14,6 @@ function processInput (file) {
     n("rides", { length: "N" }, "a", "b", "x", "y", "s", "f")
   ])
   const { parsedValue } = parsed(input)
-  return parsedValue
+  return { parsedValue, rides: parsedValue.rides.map((ride, i) => ({ ...ride, id: i})) }
 }
 module.exports = processInput
