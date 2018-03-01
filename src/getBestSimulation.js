@@ -1,5 +1,5 @@
 
-const {shuffle, flatten} = require('lodash')
+const {uniqBy, shuffle, flatten} = require('lodash')
 const {drive} = require('./drive')
 const {getSolutionPoints} = require('./getSolutionPoints')
 
@@ -30,16 +30,25 @@ exports.getBestSimulation = function (input) {
 
 exports.runSimulation = runSimulation
 
-function runSimulation (ridesArray) {
+function runSimulation (input) {
   let solution = []
-  let pendingRides = ridesArray
-  while (pendingRides.length > 0) {
-    console.log(pendingRides)
+  let pendingRides = input.rides
+  const F = input.parsedValue.F
+  console.log(input)
+
+  for (let i = 0; i < F; i++) {
     const aux = filterGivenRides(pendingRides, solution)
     solution = [...solution, drive(pendingRides)]
-    pendingRides = aux
+
+    console.log('car iteration %i', i)
+
+    console.log('===')
+    console.log(solution)
+    console.log(aux)
+    console.log('===')
+    pendingRides = filterGivenRides(pendingRides, solution)
   }
-  console.log('Finished simulation with simulation', ridesArray)
+  console.log('Finished simulation with simulation', solution)
   return solution
 }
 
@@ -48,6 +57,13 @@ function runSimulation (ridesArray) {
 */
 function filterGivenRides (ridesArray, currentSolution) {
   const servicesIds = flatten(currentSolution).map(s => s.id)
+
+  // console.log('===!=!"3-1')
+  // console.log(ridesArray)
+  // console.log(currentSolution)
+  // console.log(servicesIds)
+  // console.log('===!=!"3-1')
+
   return ridesArray.filter(ride => {
     return !servicesIds.includes(ride.id)
   })
