@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "fs-extra": "^5.0.0",
+    "gpu.js": "^1.0.5",
     "jolicitron": "^2.1.0",
     "lodash": "^4.17.5"
   },
@@ -13,7 +14,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1"
   },
-  "scripts" : {
+  "scripts": {
     "compress": "tar -zcvf yeti_hashcode.tar.gz ."
   }
 }

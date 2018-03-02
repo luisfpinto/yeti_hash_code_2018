@@ -11,6 +11,5 @@ exports.getSolutionPoints = function (vehiclesArrays, bonus) {
     }, 0)
   }).filter(a => !!a)
   const result = pointsPerVehicle.reduce((acc, points) => acc + points, 0)
-  console.log('result', result, pointsPerVehicle)
   return result
 }
