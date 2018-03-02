@@ -21,7 +21,7 @@ exports.getBestSimulation = function (input) {
   let simulation = {
     ...input,
     rides: input.rides.sort((a, b) => {
-      return a.s < b.s
+      return a.f < b.f
     })
   }
 
@@ -44,10 +44,8 @@ function runSimulation (input) {
   let solution = []
   let pendingRides = input.rides
   const F = input.parsedValue.F
-   (input)
 
   for (let i = 0; i < F; i++) {
-    const aux = filterGivenRides(pendingRides, solution)
     solution = [...solution, drive(pendingRides)]
     pendingRides = filterGivenRides(pendingRides, solution)
   }

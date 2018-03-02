@@ -9,11 +9,9 @@ const processInput = require('./src/processInput')
 fs.readdirSync('./inputs').forEach(file => {
   const input = processInput(`./inputs/${file}`)
   const solution = getBestSimulation(input)
-   (solution)
   const output = solution.reduce((acc, vehicleServices) => {
     const servicesString = vehicleServices.map(service => ' ' + service.id).join('')
     return acc + `${vehicleServices.length}${servicesString}\n`
   }, '')
   fs.writeFileSync(`outputs/output_${file}`, output)
-   ('Finished with ', `outputs/output_${file}`)
 })
